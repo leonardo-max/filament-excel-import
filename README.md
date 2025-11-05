@@ -7,7 +7,7 @@ A powerful Excel import package for Filament that provides seamless Excel file i
 You can install the package via composer:
 
 ```bash
-composer require hayderhatem/filament-excel-import
+composer require leonardo-max/filament-excel-import
 ```
 
 ## Features
