@@ -1,5 +1,5 @@
 {
-    "name": "hayderhatem/filament-excel-import",
+    "name": "leonardo-max/filament-excel-import",
     "description": "Filament Excel import trait for Laravel",
     "type": "library",
     "license": "MIT",
@@ -20,9 +20,9 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "laravel/framework": "^10.0|^11.0|^12.0",
-        "filament/filament": "^3.2",
+        "filament/filament": "^4.0",
         "phpoffice/phpspreadsheet": "^1.29.9|^2.0"
     },
     "require-dev": {
