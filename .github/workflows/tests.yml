@@ -13,12 +13,27 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3]
-        laravel: [11.*]
+        php: [8.2, 8.3, 8.4, 8.5]
+        laravel: [11.*, 12.*, 13.*]
         dependency-version: [prefer-lowest, prefer-stable]
         include:
           - laravel: 11.*
             testbench: 9.*
+          - laravel: 12.*
+            testbench: 10.*
+          - laravel: 13.*
+            testbench: 11.*
+        exclude:
+          # Laravel 13 requires PHP ^8.3.
+          - laravel: 13.*
+            php: 8.2
+          # PHP 8.5 is only exercised on the framework version that declares
+          # support for it; on the older ones it would fail on third-party
+          # deprecations that have nothing to do with this package.
+          - laravel: 11.*
+            php: 8.5
+          - laravel: 12.*
+            php: 8.5
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 
