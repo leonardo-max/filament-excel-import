@@ -118,7 +118,10 @@ class SpreadsheetReadingTest extends TestCase
     /** @return array<int, array<int, mixed>> */
     private function readBackSpreadsheet(Spreadsheet $spreadsheet, ?IReadFilter $filter = null): array
     {
-        $this->file = tempnam(sys_get_temp_dir(), 'excel-import-') . '.xlsx';
+        // No '.xlsx' suffix on purpose: tempnam() already creates the file, and
+        // concatenating one would build a second path, leaving the first behind
+        // on every run. The reader sniffs the format from the content anyway.
+        $this->file = tempnam(sys_get_temp_dir(), 'excel-import-');
 
         (new XlsxWriter($spreadsheet))->save($this->file);
         $spreadsheet->disconnectWorksheets();
